@@ -1,0 +1,27 @@
+{
+    "name": "casbin/casbin-client",
+    "description": "PHP client for Casbin Server.",
+    "authors": [
+        {
+            "name": "TechLee",
+            "email": "techlee@qq.com"
+        }
+    ],
+    "license": "Apache-2.0",
+    "keywords": [        
+        "casbin",
+        "rbac",
+        "access control",
+        "acl"
+    ],
+    "require": {
+        "grpc/grpc": "^1.15",
+        "google/protobuf": "^3.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Proto\\": "src/Proto/",
+            "GPBMetadata\\": "src/GPBMetadata/"
+        }
+    }
+}
