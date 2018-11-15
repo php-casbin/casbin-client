@@ -1,16 +1,19 @@
 PHP client for Casbin Server
 ====
 
-``casbin-client`` is Golang's client for [Casbin-Server](https://github.com/casbin/casbin-server). ``Casbin-Server`` is the ``Access Control as a Service (ACaaS)`` solution based on [Casbin](https://github.com/casbin/casbin).
+[![Latest Stable Version](https://poser.pugx.org/casbin/casbin-client/v/stable)](https://packagist.org/packages/casbin/casbin-client)
+[![Total Downloads](https://poser.pugx.org/casbin/casbin-client/downloads)](https://packagist.org/packages/casbin/casbin-client)
+[![License](https://poser.pugx.org/casbin/casbin-client/license)](https://packagist.org/packages/casbin/casbin-client)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/casbin/lobby)
+
+``Casbin-client`` is Golang's client for [Casbin-Server](https://github.com/casbin/casbin-server). ``Casbin-Server`` is the ``Access Control as a Service (ACaaS)`` solution based on [Casbin](https://github.com/casbin/casbin).
 
 ## Prerequisites
 
 * `php` 5.5 or above, 7.0 or above
-* gRPC PHP extension
+* `gRPC` PHP extension
 
-This guide gets you started with gRPC in PHP with a simple working example：
-
-[gRPC in PHP](https://grpc.io/docs/quickstart/php.html).
+This guide gets you started with gRPC in PHP with a simple working example：[gRPC in PHP](https://grpc.io/docs/quickstart/php.html).
 
 ## Installation
 
@@ -18,11 +21,12 @@ This guide gets you started with gRPC in PHP with a simple working example：
 composer require casbin/casbin-client
 ```
 
-## Example
+## Examples
+
+### Client
 
 ```php
-
-require_once '../casbin-client/vendor/autoload.php';
+require_once './vendor/autoload.php';
 
 use Proto\CasbinClient;
 use Proto\NewEnforcerRequest;
@@ -32,19 +36,27 @@ use Proto\EnforceRequest;
 $client = new CasbinClient('localhost:50051', [
     'credentials' => Grpc\ChannelCredentials::createInsecure(),
 ]);
+```
 
+### AdapterRequest
+
+```php
 $newAdapterRequest = new NewAdapterRequest();
 $newAdapterRequest->setDriverName('file');
-$newAdapterRequest->setConnectString('F:\techlee\project\golang\src\github.com\casbin\casbin-server\examples\rbac_policy.csv');
+$newAdapterRequest->setConnectString('path/to/rbac_policy.csv');
 
 list($newAdapterReply, $status) = $client->NewAdapter($newAdapterRequest)->wait();
 
 if (0 !== $status->code) {
     throw new \Exception($status->details, $status->code);
 }
-
+	
 $adapterHandle = $newAdapterReply->getHandler();
+```
 
+### EnforcerRequest
+
+```php
 $newEnforcerRequest = new NewEnforcerRequest();
 $newEnforcerRequest->setModelText(<<<EOT
 [request_definition]
@@ -70,7 +82,11 @@ list($newEnforcerReply, $status) = $client->NewEnforcer($newEnforcerRequest)->wa
 if (0 !== $status->code) {
     throw new \Exception($status->details, $status->code);
 }
+```
 
+### EnforceRequest
+
+```php
 $enforceRequest = new EnforceRequest();
 $enforceRequest->setEnforcerHandler($newEnforcerReply->getHandler());
 $enforceRequest->setParams(['alice', 'data1', 'read']);
