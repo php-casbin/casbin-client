@@ -6,7 +6,7 @@ PHP client for Casbin Server
 [![License](https://poser.pugx.org/casbin/casbin-client/license)](https://packagist.org/packages/casbin/casbin-client)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/casbin/lobby)
 
-``Casbin-client`` is Golang's client for [Casbin-Server](https://github.com/casbin/casbin-server). ``Casbin-Server`` is the ``Access Control as a Service (ACaaS)`` solution based on [Casbin](https://github.com/casbin/casbin).
+``Casbin-client`` is PHP's client for [Casbin-Server](https://github.com/casbin/casbin-server). ``Casbin-Server`` is the ``Access Control as a Service (ACaaS)`` solution based on [Casbin](https://github.com/casbin/casbin).
 
 ## Prerequisites
 
