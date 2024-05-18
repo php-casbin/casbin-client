@@ -4,7 +4,7 @@ PHP client for Casbin Server
 [![Latest Stable Version](https://poser.pugx.org/casbin/casbin-client/v/stable)](https://packagist.org/packages/casbin/casbin-client)
 [![Total Downloads](https://poser.pugx.org/casbin/casbin-client/downloads)](https://packagist.org/packages/casbin/casbin-client)
 [![License](https://poser.pugx.org/casbin/casbin-client/license)](https://packagist.org/packages/casbin/casbin-client)
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/casbin/lobby)
+[![Discord](https://img.shields.io/discord/1022748306096537660?logo=discord&label=discord&color=5865F2)](https://discord.gg/S5UjpzGZjN)
 
 ``Casbin-client`` is PHP's client for [Casbin-Server](https://github.com/casbin/casbin-server). ``Casbin-Server`` is the ``Access Control as a Service (ACaaS)`` solution based on [Casbin](https://github.com/casbin/casbin).
 
